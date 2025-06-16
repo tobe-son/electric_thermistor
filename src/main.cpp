@@ -22,15 +22,16 @@ void loop() {
   // put your main code here, to run repeatedly:
   float powValue = analogRead(PowerPin);
   int therValue = analogRead(ThermistorPin);
-  Serial.println(powValue);
-  Serial.println(therValue);
+  //Serial.println(powValue);
+  //Serial.println(therValue);
   //サーミスタ分圧からサーミスタ抵抗を読み取る
   float Rth = Rv * (powValue - therValue) / therValue;
   //温度Kを計算
   float T = 1/(1/(T0+Tk)+1/B*log(Rth/R0));
   //温度degree celciusを計算
   float deg = T - Tk;
-  Serial.println(deg);
+  Serial.print(deg);
+  Serial.println(" degC");
   //1秒待機
   delay(1000);
 }
