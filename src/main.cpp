@@ -5,9 +5,9 @@ const int PowerPin = A1;
 const int ThermistorPin = A0; //A0を使用
 
 //定数の定義
-const float B = 3435.0; //サーミスタのB定数
-const float R0 = 9850.0; //サーミスタの25度での抵抗値（カタログ値）
-const float Rv = 4610.0; //分圧抵抗の抵抗値
+const float B = 3435.0; //サーミスタのB定数（カタログ値）
+const float R0 = 9850.0; //サーミスタの25度での抵抗値（実測値）
+const float Rv = 4610.0; //分圧抵抗の抵抗値（実測値）
 const float Tk = 273.15; //0度=273.15ケルビン
 const float T0 = 25;
 
@@ -24,6 +24,7 @@ void loop() {
   int therValue = analogRead(ThermistorPin);
   //Serial.println(powValue);
   //Serial.println(therValue);
+  //Serial.println(therValue/powValue*5.0);
   //サーミスタ分圧からサーミスタ抵抗を読み取る
   float Rth = Rv * (powValue - therValue) / therValue;
   //温度Kを計算
